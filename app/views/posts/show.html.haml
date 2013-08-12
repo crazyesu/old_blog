@@ -4,22 +4,29 @@
 %p{'id' => "notice"}
   = notice
 
+
 %p
   %strong Name:
   = @post.name
 
+
 %p
   %strong Title:
   = @post.title
- 
+
+
 %p
   %strong Content:
   = @post.content
 
 
+%p
+  %b Tags:
+  = join_tags(@post)
+
+
 %h2 Comments
 = render @post.comments
-
 
 
 %h2 Add a comment:

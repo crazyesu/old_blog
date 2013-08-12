@@ -7,6 +7,6 @@
   = comment.body
 
 %p
-  = link_to 'Destroy Comment', [comment.post, comment],
+  = link_to 'Destroy Comment', post_comment_path(post_id: comment.post.id, id: comment.id),
                :confirm => 'Are you sure?',
                :method => :delete

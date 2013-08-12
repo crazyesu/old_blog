@@ -1,9 +1,23 @@
 class PostsController < ApplicationController
+  http_basic_authenticate_with :name => "aaa", :password => "9999", :except => [:index, :show]
+
+
+
+    def index
+    @posts = Post.all
+
+    respond_to do |format|
+      format.html  # index.html.erb
+      format.json  { render :json => @posts }
+    end
+  end
+
+
+
   def new
     @post = Post.new
- 
     respond_to do |format|
-      format.html  # new.html.erb
+      format.html  # new.html.haml
       format.json  { render :json => @post }
     end
   end
@@ -12,7 +26,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
- 
     respond_to do |format|
       if @post.save
         format.html  { redirect_to(@post,
@@ -33,7 +46,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     respond_to do |format|
-      format.html  # new.html.erb
+      format.html  # new.html.haml
       format.json  { render :json => @post }
     end
  # 		p 'DEBUG'*100
@@ -44,17 +57,6 @@ class PostsController < ApplicationController
  # 		def post_params
  #  		params.require(:post).permit(:title, :text)
  #		end
-
-
-
-  def index
-    @posts = Post.all
-
-    respond_to do |format|
-      format.html  # index.html.erb
-      format.json  { render :json => @posts }
-    end
-  end
 
 
 
