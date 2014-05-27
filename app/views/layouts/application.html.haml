@@ -1,0 +1,29 @@
+!!! 5
+%html(lang="zh")
+  %head
+    %title=Blog
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+    .navbar.navbar-fixed-top.navbar-inverse
+      .navbar-inner
+        .container
+          = link_to "FirstApp", welcome_index_path, id: "logo"
+
+
+
+    - # yield區域看routes.rb設定index是哪一頁
+
+    .container
+      = yield
+
+
+
+
+
+
+    %div{:id=>'footer'}
+      .container-fluid
+        %p{:style=>'text-align:center;'}= link_to "Build by Colette #{DateTime.now.year}".html_safe, "http://salon38.blogspot.tw/"

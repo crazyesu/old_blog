@@ -1,4 +1,7 @@
 Blog::Application.routes.draw do
+  resources :users
+
+
   get "welcome/index"
 
   # The priority is based upon order of creation:
@@ -55,6 +58,7 @@ Blog::Application.routes.draw do
     resources :comments
   end
 
+  resources :tests
 
   root :to => 'welcome#index'
 

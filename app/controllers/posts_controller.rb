@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
 
 
-    def index
+  def index
     @posts = Post.all
 
     respond_to do |format|
